@@ -1,0 +1,18 @@
+* Test 2: camera gating at 40 mW set point (DAC 2.244 V -> 359 mA)
+* Gate pulses: 100 us on / 400 us period (like Status-Expos), 10 ns edges
+.include channel.lib
+.include dpss.lib
+Vp vp 0 5
+Vn vn 0 -5
+Vl vlas 0 -3.3
+Vd dac 0 2.244
+Vg gate 0 PULSE(0 3.3 100u 10n 10n 100u 400u)
+Ve en 0 3.3
+XC dac gate en 0 cath vlas vp vn CHANNEL
+XL 0 cath popt DPSS params: TAU=10u
+.control
+tran 20n 1.0m
+wrdata t2_gate.txt i(v.xl.vs) i(Vl) v(popt) v(gate) v(xc.c) v(xc.u1o)
+quit
+.endc
+.end

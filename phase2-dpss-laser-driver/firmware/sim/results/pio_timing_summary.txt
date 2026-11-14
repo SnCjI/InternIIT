@@ -1,0 +1,9 @@
+Cycle-accurate PIO verification (pioemu, f_sys = 150 MHz, 1 cycle = 6.67 ns)
+
+settle  interval error: max 3.00 ns, mean 1.71 ns  (25 random cases)
+lead    interval error: max 3.33 ns, mean 2.07 ns  (25 random cases)
+trig    interval error: max 3.33 ns, mean 1.65 ns  (25 random cases)
+gap     interval error: max 3.00 ns, mean 1.47 ns  (25 random cases)
+Status Expos end -> LASER OFF: 13.33 ns (+13.3 ns input synchroniser in silicon)
+Time stamps: max error 6.67 ns over 120 edges (counter resolution 13.3 ns)
+Requirement F4: resolution <= 1 us  ->  met with margin x150

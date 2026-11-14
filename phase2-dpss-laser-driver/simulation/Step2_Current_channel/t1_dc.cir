@@ -1,0 +1,26 @@
+* Test 1: DC transfer DAC -> laser current, incl. clamp (DAC up to 3.3 V)
+.include channel.lib
+.include dpss.lib
+.param VL=-3.3
+Vp vp 0 5
+Vn vn 0 -5
+Vl vlas 0 {VL}
+Vd dac 0 0
+Vg gate 0 3.3
+Ve en 0 3.3
+XC dac gate en 0 cath vlas vp vn CHANNEL
+XL 0 cath popt DPSS
+.control
+dc Vd 0 3.3 10m
+wrdata t1_nom.txt i(Vl) v(popt) v(cath) v(xc.s) v(xc.gt)
+alterparam VL=-3.135
+reset
+dc Vd 0 3.3 10m
+wrdata t1_low.txt i(Vl) v(popt) v(cath) v(xc.s)
+alterparam VL=-3.465
+reset
+dc Vd 0 3.3 10m
+wrdata t1_high.txt i(Vl) v(popt)
+quit
+.endc
+.end

@@ -1,0 +1,12 @@
+LEAD justification (DPSS first-order model of Step 1, exposure 10 ms):
+  tau =      10 us : energy deficit at LEAD 5 ms = < 1e-6 %,  LEAD needed for < 0.1 % = 0.00 ms
+  tau =     100 us : energy deficit at LEAD 5 ms = < 1e-6 %,  LEAD needed for < 0.1 % = 0.23 ms
+  tau =    1000 us : energy deficit at LEAD 5 ms = 0.067 %,  LEAD needed for < 0.1 % = 4.61 ms
+
+Snake-by-row scan (mode B), 4 x 5 positions, 4 lasers, 80 frames
+  scan time 9.05 s (stage step 300 ms assumed), per position 152.5 ms of laser/camera time
+  settle error max 0.0 ns, lead error max 0.0 ns, gap error max 0.0 ns
+  exposures not fully illuminated: 0 of 80
+  laser order per position: [1, 2, 4, 8]
+  PC events received: 261 (FRAME_DONE 80, time stamps 180)
+  snake order: (0,0) (0,1) (0,2) (0,3) (0,4) (1,4) (1,3) (1,2) (1,1) (1,0) (2,0) (2,1) (2,2) (2,3) (2,4) (3,4) (3,3) (3,2) (3,1) (3,0)

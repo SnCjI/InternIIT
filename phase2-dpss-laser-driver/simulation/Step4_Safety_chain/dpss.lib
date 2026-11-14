@@ -1,0 +1,9 @@
+* DJ532-40 model from Step 1 (Thorlabs spec sheet 22441-S01 Rev B)
+.model DPUMP D(Is=1.522e-14 N=2.132 Rs=0.583 BV=2 IBV=10u Cjo=100p)
+.subckt DPSS a k popt params: K=1.027 ITH=0.1616 TAU=10u
+Vs a ai 0
+D1 ai k DPUMP
+Bss pss 0 V = {K}*pwr(max(i(Vs)-{ITH},0),2)
+Rl pss popt 1k
+Cl popt 0 {TAU/1k}
+.ends

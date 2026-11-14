@@ -1,0 +1,901 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "9d9755f0-c369-4e08-987a-412e2b87a2a1")
+	(paper "A3")
+	(title_block
+		(title "Phase 2 - 4-channel DPSS laser driver (top level)")
+		(date "2026-10-31")
+		(rev "A")
+		(company "Julia Isabel Sanchez Cruz - IEEE EMBS SBC Internship 2026")
+		(comment 1 "Phase 2 - 4-channel DPSS laser driver (DJ532-40)")
+	)
+	(lib_symbols)
+	(text "Reference designators: CHk -> k01..k99, Controller 5xx, Power 6xx, Safety 7xx."
+		(exclude_from_sim no)
+		(at 25.4 264.16 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left bottom)
+		)
+		(uuid "07a84ca6-c6c4-496e-85d3-1208c378de11")
+	)
+	(text "Camera (PCO.panda 4.2 bi) is only read through a protected buffer; camera trigger output disabled by default (JP1 open)."
+		(exclude_from_sim no)
+		(at 25.4 259.08 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left bottom)
+		)
+		(uuid "17ebd68e-286e-4877-a0d1-d96dac091718")
+	)
+	(text "Host PC (Python GUI, master) <-USB-> Raspberry Pi Pico 2 (MicroPython, PIO trigger timing)."
+		(exclude_from_sim no)
+		(at 25.4 236.22 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left bottom)
+		)
+		(uuid "31ed163f-5ca7-49b9-896d-df79a49f7801")
+	)
+	(text "DPSS LASER DRIVER - PHASE 2 (4 channels, Thorlabs DJ532-40 + 3 DJ modules TBD)"
+		(exclude_from_sim no)
+		(at 25.4 228.6 0)
+		(effects
+			(font
+				(size 2.4 2.4)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "3972e072-a481-464e-9bc1-2317dcd7960c")
+	)
+	(text "Safety: ENABLE = key AND interlock AND TEMP_OK AND watchdog, latched; gates all channels in hardware."
+		(exclude_from_sim no)
+		(at 25.4 254 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left bottom)
+		)
+		(uuid "89ea954a-f120-45ed-9c58-a48308fbb56b")
+	)
+	(text "Rails: +12 V in; +5 V (buck); -5 V (charge pump); LAS_NEG = -3.3 V (inverting, >= 2 A); +3V3 from Pico; VREF_LIM 2.5 V."
+		(exclude_from_sim no)
+		(at 25.4 248.92 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left bottom)
+		)
+		(uuid "ada78d68-38e7-47f6-b452-f6957624ea9b")
+	)
+	(text "Each CH sheet is the same file (laser_channel.kicad_sch): DAC set point -> gate -> clamp 400 mA -> grounded-anode current sink."
+		(exclude_from_sim no)
+		(at 25.4 241.3 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+			)
+			(justify left bottom)
+		)
+		(uuid "d0ea45c3-38a9-48c5-a6d0-bd21e28de0e5")
+	)
+	(wire
+		(pts
+			(xy 101.6 162.56) (xy 106.68 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03bf2f86-fe7e-4e64-8c54-73ac458f6795")
+	)
+	(wire
+		(pts
+			(xy 203.2 83.82) (xy 198.12 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "140aba87-5274-42a9-ae81-bdae6f662581")
+	)
+	(wire
+		(pts
+			(xy 101.6 170.18) (xy 106.68 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c1d7353-a91a-4b50-8298-61e4449bfb7f")
+	)
+	(wire
+		(pts
+			(xy 203.2 193.04) (xy 198.12 193.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4eb10bd0-6ece-4b65-8d0e-2da79e1378b6")
+	)
+	(wire
+		(pts
+			(xy 101.6 154.94) (xy 106.68 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5077e51f-e6a5-4be4-a585-39edff90cd7d")
+	)
+	(wire
+		(pts
+			(xy 101.6 160.02) (xy 106.68 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59aa4935-9e60-4a17-bf20-dbce7582d76e")
+	)
+	(wire
+		(pts
+			(xy 203.2 195.58) (xy 198.12 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5cfff3dd-d041-43a4-b9e0-af1e9a34da56")
+	)
+	(wire
+		(pts
+			(xy 101.6 152.4) (xy 106.68 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "682f7478-b563-449a-acdc-610e440422ba")
+	)
+	(wire
+		(pts
+			(xy 203.2 139.7) (xy 198.12 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a7a2fcb-83c6-447a-92e1-e8a107245be6")
+	)
+	(wire
+		(pts
+			(xy 101.6 167.64) (xy 106.68 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6cf7a6f4-b08b-41d1-986b-c9fa10de65df")
+	)
+	(wire
+		(pts
+			(xy 203.2 137.16) (xy 198.12 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a681399-5f03-4b4e-a86e-acb8a7a54d61")
+	)
+	(wire
+		(pts
+			(xy 101.6 157.48) (xy 106.68 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88659524-d990-483b-815f-a7876af5bc7b")
+	)
+	(wire
+		(pts
+			(xy 101.6 165.1) (xy 106.68 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92a31f60-bd42-4ecb-80ac-bb750bddbdfc")
+	)
+	(wire
+		(pts
+			(xy 203.2 25.4) (xy 198.12 25.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6cd6639-81e9-4517-804c-d1a082c48100")
+	)
+	(wire
+		(pts
+			(xy 203.2 27.94) (xy 198.12 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc61b450-7c86-4b99-9d2c-40b817442529")
+	)
+	(wire
+		(pts
+			(xy 203.2 81.28) (xy 198.12 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff8d5160-1f3f-4d44-8b41-902107b26bb3")
+	)
+	(label "DAC1"
+		(at 198.12 25.4 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "26fcb179-0810-419a-bb96-17b9166cc6b8")
+	)
+	(label "LON2"
+		(at 106.68 165.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2980a5c9-a6f8-471d-9dd6-fb6e8f94f421")
+	)
+	(label "DAC4"
+		(at 106.68 160.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "325dac94-cbe6-4470-93a6-6c13757ccf7b")
+	)
+	(label "LON3"
+		(at 106.68 167.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "41d1fc11-db08-4716-95bf-262ea87815b5")
+	)
+	(label "DAC3"
+		(at 198.12 137.16 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "65ad6730-9f83-41d7-8d14-e4284a935d1f")
+	)
+	(label "LON4"
+		(at 198.12 195.58 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "72135bcc-6f61-4545-a0a2-69a1b1ba1ca2")
+	)
+	(label "LON1"
+		(at 198.12 27.94 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "842830cd-86bd-44e4-81da-f9f5a0c8122f")
+	)
+	(label "DAC1"
+		(at 106.68 152.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "86e149eb-3614-4ed8-8213-9d72a289b26e")
+	)
+	(label "DAC4"
+		(at 198.12 193.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "884d5564-05a8-4e8a-98dd-1008c702ac5f")
+	)
+	(label "LON1"
+		(at 106.68 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9213267e-308c-43f7-a978-a1ee1e217ef2")
+	)
+	(label "LON4"
+		(at 106.68 170.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9ab82229-fbe0-4200-a016-bb10f653636f")
+	)
+	(label "LON2"
+		(at 198.12 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b479d974-9b1a-4ee0-82cf-7d1438743fc6")
+	)
+	(label "DAC2"
+		(at 106.68 154.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cd2d40ca-ee7e-4ff2-b293-aeb29db6faf4")
+	)
+	(label "DAC2"
+		(at 198.12 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e3f32b9c-650f-49e7-9f5d-dc93dcd4f74e")
+	)
+	(label "DAC3"
+		(at 106.68 157.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fa03a6a5-63e7-48ab-8794-fdcd4557d050")
+	)
+	(label "LON3"
+		(at 198.12 139.7 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "fa763e4c-f53a-4f09-9867-8325a0a6cabe")
+	)
+	(sheet
+		(at 25.4 35.56)
+		(size 101.6 35.56)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "18898b21-05c0-4c64-b730-ca074667cc90")
+		(property "Sheetname" "Power"
+			(at 25.4 34.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 25.4 71.72 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "DPSS_Driver_4ch"
+				(path "/9d9755f0-c369-4e08-987a-412e2b87a2a1"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 203.2 187.96)
+		(size 86.36 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "27515699-c1a8-40e8-8bf3-e4e2054ce091")
+		(property "Sheetname" "CH4"
+			(at 203.2 187.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "laser_channel.kicad_sch"
+			(at 203.2 219.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "DAC_OUT" input
+			(at 203.2 193.04 180)
+			(uuid "ec89035b-4301-4aec-8b41-9619a1f71034")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LASER_ON" input
+			(at 203.2 195.58 180)
+			(uuid "93f2de6c-11a3-4ea4-b4ae-c6876cf5d88a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "DPSS_Driver_4ch"
+				(path "/9d9755f0-c369-4e08-987a-412e2b87a2a1"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 203.2 132.08)
+		(size 86.36 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "8535e24f-af10-49cb-8fec-fbb4f3cfe47a")
+		(property "Sheetname" "CH3"
+			(at 203.2 131.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "laser_channel.kicad_sch"
+			(at 203.2 163.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "DAC_OUT" input
+			(at 203.2 137.16 180)
+			(uuid "a8edbdc5-3708-4e2f-9964-f13d4ae93721")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LASER_ON" input
+			(at 203.2 139.7 180)
+			(uuid "df838314-f533-4530-bee3-207333326ba3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "DPSS_Driver_4ch"
+				(path "/9d9755f0-c369-4e08-987a-412e2b87a2a1"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 25.4 147.32)
+		(size 76.2 55.88)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "91998592-4b1a-4ad5-9f7a-1f103f18b7e1")
+		(property "Sheetname" "Controller"
+			(at 25.4 146.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "controller.kicad_sch"
+			(at 25.4 203.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "DAC_OUT1" output
+			(at 101.6 152.4 0)
+			(uuid "64d78b05-ff4b-4543-a6ff-391656d764ad")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "DAC_OUT2" output
+			(at 101.6 154.94 0)
+			(uuid "dd96737a-ee66-4501-ae3c-8977afeaa152")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "DAC_OUT3" output
+			(at 101.6 157.48 0)
+			(uuid "b41ae8f4-2ef4-419c-b76b-cf0bcc2200b2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "DAC_OUT4" output
+			(at 101.6 160.02 0)
+			(uuid "26c157cc-9a66-4cf5-adea-90272b77b195")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LASER_ON1" output
+			(at 101.6 162.56 0)
+			(uuid "54ec928e-08a0-438b-90b3-c85002893d45")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LASER_ON2" output
+			(at 101.6 165.1 0)
+			(uuid "c0145210-654f-4e92-9ab9-2c0255ec13ee")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LASER_ON3" output
+			(at 101.6 167.64 0)
+			(uuid "9a0a4e2e-f23a-4483-9b10-f5e16657c213")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LASER_ON4" output
+			(at 101.6 170.18 0)
+			(uuid "083b912a-bcbd-494c-94f0-3e01968b4ec4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "DPSS_Driver_4ch"
+				(path "/9d9755f0-c369-4e08-987a-412e2b87a2a1"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 203.2 20.32)
+		(size 86.36 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "98a4a834-3f26-4775-bc54-5daed7958aec")
+		(property "Sheetname" "CH1"
+			(at 203.2 19.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "laser_channel.kicad_sch"
+			(at 203.2 51.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "DAC_OUT" input
+			(at 203.2 25.4 180)
+			(uuid "71d576e3-495c-4f35-a6d8-b99529e95485")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LASER_ON" input
+			(at 203.2 27.94 180)
+			(uuid "bd0291b7-8316-4077-a35f-e38d0d0ee8f0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "DPSS_Driver_4ch"
+				(path "/9d9755f0-c369-4e08-987a-412e2b87a2a1"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 203.2 76.2)
+		(size 86.36 30.48)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "a3bf68e3-a5a3-4617-ad8c-aecb86161082")
+		(property "Sheetname" "CH2"
+			(at 203.2 75.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "laser_channel.kicad_sch"
+			(at 203.2 107.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "DAC_OUT" input
+			(at 203.2 81.28 180)
+			(uuid "a05b4817-5abd-456d-94a4-9a77a650ab47")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LASER_ON" input
+			(at 203.2 83.82 180)
+			(uuid "c66a5c21-2206-4f21-9a04-3d216644e6f9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "DPSS_Driver_4ch"
+				(path "/9d9755f0-c369-4e08-987a-412e2b87a2a1"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 25.4 91.44)
+		(size 101.6 35.56)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "e6c476d6-3cf8-42e3-b91f-62d433c49543")
+		(property "Sheetname" "Safety"
+			(at 25.4 90.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "safety.kicad_sch"
+			(at 25.4 127.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "DPSS_Driver_4ch"
+				(path "/9d9755f0-c369-4e08-987a-412e2b87a2a1"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

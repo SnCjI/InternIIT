@@ -1,0 +1,40 @@
+import schemdraw, schemdraw.elements as elm
+schemdraw.config(font='Liberation Serif',fontsize=11,lw=1.1)
+def box(d,x,y,w,h,text):
+    d.add(elm.Line().at((x,y-h/2)).to((x+w,y-h/2))); d.add(elm.Line().at((x+w,y-h/2)).to((x+w,y+h/2)))
+    d.add(elm.Line().at((x+w,y+h/2)).to((x,y+h/2))); d.add(elm.Line().at((x,y+h/2)).to((x,y-h/2)))
+    d.add(elm.Label().at((x+w/2,y)).label(text,fontsize=9.5))
+with schemdraw.Drawing(file='fig_s2_schematic.png',dpi=250,show=False) as d:
+    d.add(elm.Dot(open=True).at((0,0)).label('DAC\n0–2.5 V',loc='left'))
+    d.add(elm.Switch().at((0,0)).right(2).label('S1',loc='top'))
+    d.add(elm.Line().at((1,-0.15)).down(1.3).linestyle('--').color('#737373'))
+    d.add(elm.Label().at((1,-1.95)).label('ENABLE AND GATE\n(74LVC1G08)',fontsize=8.5,color='#595959'))
+    d.add(elm.Resistor().at((2,0)).right(2).label('1 kΩ',loc='top'))
+    d.add(elm.Dot().at((4,0)))
+    d.add(elm.Capacitor().at((4,0)).down(1.6).label('2.2 nF',loc='bottom')); d.add(elm.Ground())
+    d.add(elm.Line().at((4,0)).to((5.0,0)))
+    box(d,5.0,0,2.8,1.4,'Precision clamp\n+ buffer (U3, U4)\nV ≤ 2.5 V (400 mA)')
+    d.add(elm.Line().at((7.8,0)).to((8.2,0)))
+    box(d,8.2,0,2.6,1.4,'Level shifter (U2)\n0.16·V + V$_{LAS}$')
+    d.add(elm.Line().at((10.8,0)).to((11.4,0)))
+    u1=d.add(elm.Opamp(leads=False).anchor('in2').at((11.4,0)).right().label('U1',loc='center',ofst=(-0.3,0)))
+    rg=d.add(elm.Resistor().at(u1.out).right(2.2).label('47 Ω',loc='bottom'))
+    m=d.add(elm.NFet(bulk=False).anchor('gate').at(rg.end).reverse().label('M1',loc='right',ofst=(0.15,0)))
+    dx,dy=m.drain; sx,sy=m.source
+    d.add(elm.Line().at(m.drain).up(0.6)); d.add(elm.Dot().at((dx,dy+0.6))); d.add(elm.Label().at((dx+0.75,dy+0.35)).label('cathode',fontsize=9))
+    d.add(elm.LED().at((dx,dy+0.6)).up(2.2).reverse()); d.add(elm.Label().at((dx-1.9,dy+1.9)).label('DJ532-40\n(case = anode)',fontsize=9))
+    d.add(elm.Line().at((dx,dy+2.8)).up(0.4)); d.add(elm.Ground().at((dx,dy+3.2)).theta(180)); d.add(elm.Label().at((dx-0.9,dy+3.4)).label('GND',fontsize=9))
+    d.add(elm.Line().at((dx,dy+0.6)).right(1.6)); d.add(elm.Schottky().at((dx+1.6,dy+0.6)).up(2.2).reverse().label('D2',loc='right'))
+    d.add(elm.Line().at((dx+1.6,dy+2.8)).to((dx,dy+2.8)))
+    SY=-1.6
+    d.add(elm.Line().at(m.source).to((sx,SY))); d.add(elm.Dot().at((sx,SY)).label('S',loc='right'))
+    d.add(elm.Resistor().at((sx,SY)).down(1.8)); d.add(elm.Vss().label('V$_{LAS}$ = −3.3 V',loc='bottom')); d.add(elm.Label().at((sx+0.8,SY-0.9)).label('R$_S$\n1 Ω',fontsize=10))
+    ix,iy=u1.in1
+    d.add(elm.Line().at((sx,SY)).to((ix+1.5,SY)))
+    d.add(elm.Resistor().at((ix+1.5,SY)).left(1.8).label('1 kΩ',loc='bottom'))
+    d.add(elm.Line().at((ix-0.3,SY)).to((ix-0.3,iy))); d.add(elm.Line().at((ix-0.3,iy)).to(u1.in1))
+    d.add(elm.Dot().at((ix-0.3,iy)))
+    ox,oy=u1.out
+    d.add(elm.Line().at((ix-0.3,iy)).to((ix-0.3,iy+1.3)))
+    d.add(elm.Capacitor().at((ix-0.3,iy+1.3)).right(ox+0.4-(ix-0.3)).label('2.2 nF',loc='top'))
+    d.add(elm.Line().at((ox+0.4,iy+1.3)).to((ox+0.4,oy))); d.add(elm.Dot().at((ox+0.4,oy)))
