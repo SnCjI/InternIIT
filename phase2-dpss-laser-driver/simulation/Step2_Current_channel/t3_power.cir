@@ -1,0 +1,21 @@
+* Test 3: power-up / power-down with undefined control signals
+* Rails ramp up in 2 ms. DAC output is stuck at 3.3 V (worst case) and GATE is high
+* from t = 0, but ENABLE stays low (pull-down) until t = 10 ms.
+* At t = 10 ms ENABLE goes high; DAC then follows the firmware ramp 0 -> 2.244 V in 100 ms.
+* Power-down at t = 150 ms: rails collapse in 1 ms while the laser is on.
+.include channel.lib
+.include dpss.lib
+Vp vp 0 PWL(0 0 2m 5 150m 5 151m 0)
+Vn vn 0 PWL(0 0 2m -5 150m -5 151m 0)
+Vl vlas 0 PWL(0 0 2m -3.3 150m -3.3 151m 0)
+Vd dac 0 PWL(0 3.3 9.99m 3.3 10m 0 110m 2.244 200m 2.244)
+Vg gate 0 3.3
+Ve en 0 PWL(0 0 10m 0 10.001m 3.3)
+XC dac gate en 0 cath vlas vp vn CHANNEL
+XL 0 cath popt DPSS params: TAU=10u
+.control
+tran 5u 160m
+wrdata t3_power.txt i(v.xl.vs) i(Vl) v(popt) v(en) v(dac) v(cath)
+quit
+.endc
+.end

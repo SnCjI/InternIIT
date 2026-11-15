@@ -1,0 +1,19 @@
+* Test 5: worst-case compliance: laser at Vop max (2.2 V @ Po) and rail at -5 %
+* (an extra 0.65 ohm in series with the laser lifts its voltage to ~2.2 V at 400 mA)
+.include channel.lib
+.include dpss.lib
+Vp vp 0 5
+Vn vn 0 -5
+Vl vlas 0 -3.135
+Vd dac 0 0
+Vg gate 0 3.3
+Ve en 0 3.3
+XC dac gate en 0 cath vlas vp vn CHANNEL
+Rx cath cx 0.65
+XL 0 cx popt DPSS
+.control
+dc Vd 0 2.6 10m
+wrdata t5_comp.txt i(Vl) v(cath) v(xc.s) v(cx)
+quit
+.endc
+.end

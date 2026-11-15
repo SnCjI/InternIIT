@@ -1,0 +1,22 @@
+Step 6 - Camera trigger mode A vs mode B (firmware core + board model + rolling-shutter camera)
+
+Camera model (pco.panda 4.2 bi manual): rolling shutter, line time 12.174 us, 2048 lines -> 24.9 ms from first
+to last line start; trigger -> exposure 2 line times + jitter <= 1 line time; Status Expos = overall time of All lines.
+Scan: 4 x 5 positions x 4 lasers, 5 seeds, stage step 300 ms (assumed), SETTLE 2 ms, LEAD 5 ms,
+exposure 10 ms, GAP 20 ms, DPSS tau 1000 us (Step 1 worst case).
+PC latencies of A1-A3 are ASSUMPTIONS (to be measured with the board time stamps on the real PC).
+
+     images faults   scan s    pos ms  start ms    p99 ms    max ms  extra ms  jitter us  rows min
+B       400      0    10.44     222.0     0.031     0.036     0.037      5.03         12    0.9993
+A1      400      0    10.57     228.3     1.541     2.713     3.624      6.54       2125    0.9996
+A2      400      0    10.71     235.6     3.352    10.014    21.930      8.35      14315    0.9998
+A3      400      0    11.23     261.6     9.863    18.977    31.437     14.86      26968    0.9999
+  start = exposure start (first line) after the laser is stable (LASER_ON + LEAD)
+  extra = laser light that no camera line uses (LEAD + waiting for the trigger), per image
+  jitter = spread of the exposure start relative to the stage in-position edge
+
+Status Expos signal timing (mode B, tau 1 ms):
+  'overall time of All lines' (any line integrating)         rows lit 99.9-100.0 %, rows below 50 %: 0 of 2048
+  'First Line'                                               rows lit 0.0-99.9 %, rows below 50 %: 1555 of 2048
+  'common time of All lines', exposure 40 ms                 rows lit 40.2-100.0 %, rows below 50 %: 323 of 2048
+  'common time of All lines', exposure 10 ms                 no Status Expos pulse -> EVT FAULT EXPOSURE_TIMEOUT, rows below 50 %: 2048 of 2048

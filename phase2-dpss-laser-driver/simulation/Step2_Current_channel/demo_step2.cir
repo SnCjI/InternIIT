@@ -1,0 +1,17 @@
+* DEMO Step 2 - one current-driver channel gated by the camera (40 mW set point)
+* Open ngspice.exe, then:  cd <this folder>   and   source demo_step2.cir
+.include channel.lib
+.include dpss.lib
+Vp vp 0 5
+Vn vn 0 -5
+Vl vlas 0 -3.3
+Vd dac 0 2.244
+Vg gate 0 PULSE(0 3.3 100u 10n 10n 100u 400u)
+Ve en 0 3.3
+XC dac gate en 0 cath vlas vp vn CHANNEL
+XL 0 cath popt DPSS params: TAU=10u
+.control
+tran 20n 1m
+plot i(v.xl.vs)*1000 v(popt)*5000 v(gate)*100 title 'Laser current (mA), optical power x5 (mW), gate x100' ylabel 'mA / mW'
+.endc
+.end

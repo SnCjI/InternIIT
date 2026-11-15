@@ -1,0 +1,59 @@
+* Phase 2 - Step 1: behavioral model of the Thorlabs DJ532-40 DPSS module
+* Source   : Thorlabs DJ532-40 spec sheet, 22441-S01 Rev B (June 13, 2012),
+*            specification table + "Typical Operation Curve" (LIV)
+* Electrical: 808 nm pump diode fitted to the LIV voltage curve
+*            (1.55 V @ 20 mA ... 1.89 V @ 330 mA ... 1.97 V @ 450 mA)
+* Optical  : frequency doubling (KTP) -> green power ~ quadratic above threshold
+*            P = K*(I - Ith)^2, fitted to the typical LIV curve:
+*            K = 1.027 W/A^2, Ith = 161.6 mA
+*            first-order lag tau (NOT specified by Thorlabs -> swept)
+* Pinout (Style E): pin 2 = case = LD anode, pin 3 = LD cathode, pin 1 = n.c.
+* Optical power is represented as a voltage: 1 V = 1 W
+.param K=1.027 ITH=0.1616 TAU=100u
+.model DPUMP D(Is=1.522e-14 N=2.132 Rs=0.583 BV=2 IBV=10u Cjo=100p)
+.subckt DPSS a k popt params: K=1.027 ITH=0.1616 TAU=100u
+Vs a ai 0
+D1 ai k DPUMP
+Bss pss 0 V = {K}*pwr(max(i(Vs)-{ITH},0),2)
+Rl pss popt 1k
+Cl popt 0 {TAU/1k}
+.ends
+* --- DC check: I-V and P-I curves
+Vcc vcc 0 5
+Idc vcc la 0
+XL la 0 pdc DPSS
+* --- transient bench: ideal current pulse 0 -> 359 mA (40 mW on the typical curve) (1 us edges) at t = 1 ms, length 10 ms
+Ipl vcc lb PULSE(0 0.359 1m 1u 1u 10m 40m)
+XT lb 0 popt DPSS params: TAU={TAU}
+.control
+set noaskquit
+* DC sweep of current: I-V and P-I
+dc Idc 0 0.45 2m
+wrdata dc_iv.txt v(la) v(pdc)
+* transient for three values of tau (10 us, 100 us, 1 ms)
+alterparam TAU = 10u
+reset
+tran 0.5u 13m
+wrdata tr_tau10u.txt v(popt) v(lb)
+alterparam TAU = 100u
+reset
+tran 0.5u 13m
+wrdata tr_tau100u.txt v(popt) v(lb)
+alterparam TAU = 1m
+reset
+tran 0.5u 13m
+wrdata tr_tau1m.txt v(popt) v(lb)
+quit
+* DC sweep of current: I-V and P-I
+dc Idc 0 0.45 2m
+wrdata dc_iv.txt v(la) v(pdc)
+* transient for three values of tau
+foreach t 10u 100u 1m
+  alterparam TAU = $t
+  reset
+  tran 0.5u 13m
+  wrdata tr_tau_$t.txt v(popt) v(lb)
+end
+quit
+.endc
+.end

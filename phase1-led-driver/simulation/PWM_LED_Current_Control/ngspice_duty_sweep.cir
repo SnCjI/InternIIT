@@ -1,0 +1,40 @@
+* Phase 1 PWM -> LED current, same topology as Proteus PWM_LED_current_simulation
+.model Q2N2222 NPN(Is=14.34f Xti=3 Eg=1.11 Vaf=74.03 Bf=255.9 Ne=1.307 Ise=14.34f Ikf=.2847 Xtb=1.5 Br=6.092 Nc=2 Isc=0 Ikr=0 Rc=1 Cjc=7.306p Mjc=.3416 Vjc=.75 Fc=.5 Cje=22.01p Mje=.377 Vje=.75 Tr=46.91n Tf=411.1p Itf=.6 Vtf=1.7 Xtf=3 Rb=10)
+.model QPWR NPN(Is=1e-12 Bf=100 Vaf=100 Ikf=5 Rb=1 Re=0.05 Rc=0.1 Cje=200p Cjc=100p Tf=20n Tr=1u)
+.model D1N4007 D(Is=7.02767n Rs=0.0341512 N=1.80803 Cjo=10p)
+.param TON=1m
+V12 vcc 0 12
+Vg pwm 0 PULSE(0 3.3 0 10n 10n {TON} 2m)
+R1 pwm b1 1k
+Q1 dim b1 0 Q2N2222
+R2 vcc dim 10k
+* TIP122 equivalent: Darlington + internal resistors
+QA c3 dim m QPWR
+QB c3 m e3 QPWR
+RBE1 dim m 8k
+RBE2 m e3 120
+Vm vcc am 0
+D1 am a D1N4007
+RLED a c3 6
+RS e3 0 1.8
+Q2 dim e3 0 Q2N2222
+.control
+let duties = vector(11)
+foreach d 0 10 20 30 40 50 60 70 80 90 100
+  let ton = (1 - $d/100)*2m
+  if ton < 1n
+    let ton = 1n
+  end
+  if ton > 1.999m
+    let ton = 1.999m
+  end
+  alterparam TON = $&ton
+  reset
+  tran 0.5u 6m
+  meas tran iavg AVG i(Vm) from=2m to=6m
+  meas tran ipk MAX i(Vm) from=2m to=6m
+  echo "DUTY $d" >> res.txt
+  print iavg ipk >> res.txt
+end
+.endc
+.end

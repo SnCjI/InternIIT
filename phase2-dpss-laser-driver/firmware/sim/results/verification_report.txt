@@ -1,0 +1,719 @@
+======================================================================
+PIO opcodes vs independent assembler   [exit 0]
+======================================================================
+frame_seq  20 instr  match=True
+edge_ts    11 instr  match=True
+pulse       5 instr  match=True
+TOTAL PIO0 instructions (frame_seq + edge_ts): 31 / 32
+ALL MATCH
+
+======================================================================
+Firmware unit tests (requirements)   [exit 0]
+======================================================================
+============================= test session starts =============================
+platform win32 -- Python 3.13.17, pytest-9.2.0, pluggy-1.7.0 -- python
+cachedir: .pytest_cache
+rootdir: Firmware_Step5
+collecting ... collected 15 items
+
+sim/test_firmware.py::test_dac_frames PASSED                             [  6%]
+sim/test_firmware.py::test_current_scaling PASSED                        [ 13%]
+sim/test_firmware.py::test_power_up_safe PASSED                          [ 20%]
+sim/test_firmware.py::test_limits PASSED                                 [ 26%]
+sim/test_firmware.py::test_ramp_at_least_100ms PASSED                    [ 33%]
+sim/test_firmware.py::test_on_refused_while_ramping PASSED               [ 40%]
+sim/test_firmware.py::test_interlock_opens_while_emitting PASSED         [ 46%]
+sim/test_firmware.py::test_usb_heartbeat_timeout PASSED                  [ 53%]
+sim/test_firmware.py::test_fault_stops_watchdog_hardware_follows PASSED  [ 60%]
+sim/test_firmware.py::test_reset_refused_with_chain_open PASSED          [ 66%]
+sim/test_firmware.py::test_camera_protection PASSED                      [ 73%]
+sim/test_firmware.py::test_frames_timing_mode_b PASSED                   [ 80%]
+sim/test_firmware.py::test_exposure_timeout_fault PASSED                 [ 86%]
+sim/test_firmware.py::test_timestamp_decoder_cycle_accurate PASSED       [ 93%]
+sim/test_firmware.py::test_timestamp_wrap_marker_ignored PASSED          [100%]
+
+============================= 15 passed in 1.47s ==============================
+
+======================================================================
+Cycle-accurate PIO timing   [exit 0]
+======================================================================
+Cycle-accurate PIO verification (pioemu, f_sys = 150 MHz, 1 cycle = 6.67 ns)
+
+settle  interval error: max 3.00 ns, mean 1.71 ns  (25 random cases)
+lead    interval error: max 3.33 ns, mean 2.07 ns  (25 random cases)
+trig    interval error: max 3.33 ns, mean 1.65 ns  (25 random cases)
+gap     interval error: max 3.00 ns, mean 1.47 ns  (25 random cases)
+Status Expos end -> LASER OFF: 13.33 ns (+13.3 ns input synchroniser in silicon)
+Time stamps: max error 6.67 ns over 120 edges (counter resolution 13.3 ns)
+Requirement F4: resolution <= 1 us  ->  met with margin x150
+figure saved
+Matplotlib is building the font cache; this may take a moment.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+WARNING: findfont: Font family 'Liberation Serif' not found.
+
+======================================================================
+Snake scan + LEAD justification   [exit 0]
+======================================================================
+LEAD justification (DPSS first-order model of Step 1, exposure 10 ms):
+  tau =      10 us : energy deficit at LEAD 5 ms = < 1e-6 %,  LEAD needed for < 0.1 % = 0.00 ms
+  tau =     100 us : energy deficit at LEAD 5 ms = < 1e-6 %,  LEAD needed for < 0.1 % = 0.23 ms
+  tau =    1000 us : energy deficit at LEAD 5 ms = 0.067 %,  LEAD needed for < 0.1 % = 4.61 ms
+
+Snake-by-row scan (mode B), 4 x 5 positions, 4 lasers, 80 frames
+  scan time 9.05 s (stage step 300 ms assumed), per position 152.5 ms of laser/camera time
+  settle error max 0.0 ns, lead error max 0.0 ns, gap error max 0.0 ns
+  exposures not fully illuminated: 0 of 80
+  laser order per position: [1, 2, 4, 8]
+  PC events received: 261 (FRAME_DONE 80, time stamps 180)
+  snake order: (0,0) (0,1) (0,2) (0,3) (0,4) (1,4) (1,3) (1,2) (1,1) (1,0) (2,0) (2,1) (2,2) (2,3) (2,4) (3,4) (3,3) (3,2) (3,1) (3,0)
+figures saved
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family ['Liberation Serif'] not found. Falling back to DejaVu Sans.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.
+findfont: Font family 'Liberation Serif' not found.

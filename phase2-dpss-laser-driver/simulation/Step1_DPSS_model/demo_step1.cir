@@ -1,0 +1,25 @@
+* DEMO Step 1 - DJ532-40 model: optical response for tau = 10 us, 100 us, 1 ms
+* Open ngspice.exe, then:  cd <this folder>   and   source demo_step1.cir
+.param K=1.027 ITH=0.1616 TAU=10u
+.model DPUMP D(Is=1.522e-14 N=2.132 Rs=0.583 BV=2 IBV=10u Cjo=100p)
+.subckt DPSS a k popt params: K=1.027 ITH=0.1616 TAU=10u
+Vs a ai 0
+D1 ai k DPUMP
+Bss pss 0 V = {K}*pwr(max(i(Vs)-{ITH},0),2)
+Rl pss popt 1k
+Cl popt 0 {TAU/1k}
+.ends
+Vcc vcc 0 5
+Ipl vcc lb PULSE(0 0.359 1m 1u 1u 10m 40m)
+XT lb 0 popt DPSS params: TAU={TAU}
+.control
+tran 1u 13m
+alterparam TAU=100u
+reset
+tran 1u 13m
+alterparam TAU=1m
+reset
+tran 1u 13m
+plot tran1.v(popt)*1000 tran2.v(popt)*1000 tran3.v(popt)*1000 title 'DJ532-40 optical output (mW): tau 10us, 100us, 1ms' ylabel 'mW'
+.endc
+.end

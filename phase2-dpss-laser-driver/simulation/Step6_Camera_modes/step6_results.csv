@@ -1,0 +1,5 @@
+scenario,description,images,faults,scan_s,per_position_ms,exp_start_after_laser_stable_ms_mean,p99,max,extra_laser_on_ms_mean,extra_laser_on_ms_max,laser_on_vs_needed,exposure_vs_stage_jitter_us,row_uniformity_min,crosstalk_max
+B,Mode B: board triggers camera (SMA in #1),400,0,10.44,222,0.0307869,0.0362333,0.036512,5.0308,5.03653,1.14407,12.0545,0.999342,1.35531e-12
+A1,"Mode A1: PC trigger, tuned timing loop",400,0,10.5666,228.33,1.54136,2.71319,3.62422,6.54137,8.62423,1.18732,2124.9,0.999569,7.9342e-13
+A2,"Mode A2: PC trigger, Python 3.11+ sleep",400,0,10.7116,235.58,3.35152,10.0141,21.9301,8.35153,26.9301,1.23916,14314.9,0.999841,3.27816e-13
+A3,"Mode A3: PC trigger, default 15.6 ms timer",400,0,11.2326,261.63,9.86345,18.9769,31.4371,14.8635,36.4371,1.42564,26968.3,0.99986,2.88651e-13

@@ -1,0 +1,23 @@
+* Test 4: reverse-voltage transient on the laser (ESD / inductive kick from the cable)
+* A 2 A, 1 us current pulse is forced in the reverse direction across the laser while
+* it is on at 359 mA, with and without the antiparallel Schottky.
+.include channel.lib
+.include dpss.lib
+.param DR=1
+Vp vp 0 5
+Vn vn 0 -5
+Vl vlas 0 -3.3
+Vd dac 0 2.244
+Vg gate 0 3.3
+Ve en 0 3.3
+XC dac gate en 0 cath vlas vp vn CHANNEL
+XL 0 cath popt DPSS params: TAU=10u
+* reverse kick: current pushed from cathode to anode node through 10 ohm cable model
+Ik 0 kick PULSE(0 2 200u 50n 50n 1u 1)
+Rk kick cath 1m
+.control
+tran 5n 300u
+wrdata t4_with.txt i(v.xl.vs) v(cath) i(Vl)
+quit
+.endc
+.end
