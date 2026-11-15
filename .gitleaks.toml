@@ -1,0 +1,28 @@
+# Configuracion de gitleaks para este repositorio.
+#
+# Parte de las reglas por defecto y añade excepciones para los archivos
+# que genera KiCad y para los resultados de simulacion: son datos de CAD
+# y mediciones numericas, no lugares donde pueda vivir una credencial.
+#
+# El falso positivo que motivo esta configuracion:
+#
+#     "J701","KEY SWITCH","JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",...
+#     phase2-dpss-laser-driver/fabrication/assembly/DPSS_Driver_4ch-pos.csv
+#
+# La regla generic-api-key leyo "KEY SWITCH" como una clave. Es el
+# conector del interruptor de llave del driver laser.
+#
+# Las excepciones son por ruta y solo cubren salidas generadas. El codigo
+# fuente, el firmware y los scripts se siguen escaneando con todas las
+# reglas.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Salidas generadas de KiCad y resultados de simulacion"
+paths = [
+  '''fabrication/.*\.(csv|pos|drl|gbr|gbrjob|zip)$''',
+  '''simulation/.*\.csv$''',
+  '''.*/results/.*\.csv$''',
+]
