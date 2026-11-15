@@ -11,9 +11,9 @@ ALL MATCH
 Firmware unit tests (requirements)   [exit 0]
 ======================================================================
 ============================= test session starts =============================
-platform win32 -- Python 3.13.17, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\july_\AppData\Local\Programs\Python\Python313\python.exe
+platform win32 -- Python 3.13.17, pytest-9.2.0, pluggy-1.7.0 -- python
 cachedir: .pytest_cache
-rootdir: C:\Users\july_\Downloads\Leddriverkicad\led_driver_intern_me\Phase2_DPSS_Laser_Driver\Firmware_Step5
+rootdir: Firmware_Step5
 collecting ... collected 15 items
 
 sim/test_firmware.py::test_dac_frames PASSED                             [  6%]

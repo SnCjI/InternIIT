@@ -18,7 +18,7 @@ Circuit (channel.lib, figure fig_s2_schematic.png)
   Protection: antiparallel Schottky D2 (reverse voltage), 1 nF across laser,
   shorting relay across the laser while ENABLE is low.
   Op-amps and MOSFET are behavioral/generic models (GBW 10 MHz op-amp,
-  logic-level NMOS Vth 1.5 V); real part numbers are chosen in Step 7.
+  logic-level NMOS Vth 1.5 V); real part numbers are chosen in Step 3.
 
 Tests and results (ngspice)
   T1 DC transfer (t1_dc.cir)
