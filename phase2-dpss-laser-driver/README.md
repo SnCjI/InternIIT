@@ -12,8 +12,8 @@ The system has three players:
 
 As in Phase 1, everything was verified in simulation; no hardware was built.
 
-📄 Report (IEEE format): [`docs/DPSS_Laser_Driver_Phase2_Report_IEEE.pdf`](docs/DPSS_Laser_Driver_Phase2_Report_IEEE.pdf)
-📄 Requirements and architecture, Rev 3: [`docs/DPSS_Laser_Driver_Phase2_Requirements_Architecture_Rev3.pdf`](docs/DPSS_Laser_Driver_Phase2_Requirements_Architecture_Rev3.pdf)
+Report (IEEE format): [`docs/DPSS_Laser_Driver_Phase2_Report_IEEE.pdf`](docs/DPSS_Laser_Driver_Phase2_Report_IEEE.pdf)
+Requirements and architecture, Rev 3: [`docs/DPSS_Laser_Driver_Phase2_Requirements_Architecture_Rev3.pdf`](docs/DPSS_Laser_Driver_Phase2_Requirements_Architecture_Rev3.pdf)
 
 <p align="center">
   <img src="../docs/images/phase2/fig_system.png" width="760" alt="System block diagram">
@@ -124,7 +124,7 @@ With no hardware available, the firmware was validated four ways:
 
 Two bugs were found and fixed this way: the stage and camera pins were not configured as inputs, and the main loop did not yield to the USB stack.
 
-➡️ See [`firmware/README.md`](firmware/README.md) for the full command set and how to run the verification (`python run_all.py`).
+See [`firmware/README.md`](firmware/README.md) for the full command set and how to run the verification (`python run_all.py`).
 
 ### Step 6 — Camera and stage synchronization
 

@@ -4,7 +4,7 @@
 
 Phase 1 of the internship: a driver that powers five high-power COB LEDs (UV, Blue, Green, Red and NIR) for multispectral microscopy. Each color can be dimmed independently from a PC. The design was taken from requirements to a fabrication-ready PCB and verified in simulation. No hardware was built.
 
-📄 Full report (IEEE format): [`report/Multispectral_LED_Driver_Phase1_Report_IEEE.pdf`](report/Multispectral_LED_Driver_Phase1_Report_IEEE.pdf)
+Full report (IEEE format): [`report/Multispectral_LED_Driver_Phase1_Report_IEEE.pdf`](report/Multispectral_LED_Driver_Phase1_Report_IEEE.pdf)
 
 <p align="center">
   <img src="../docs/images/phase1/block_diagram.png" width="720" alt="Block diagram">
